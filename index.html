@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylo Propio</title>
+  <style>
+    body {font-family: Arial; margin:0; background:#111; color:#fff;}
+    header {background:#000; padding:20px; text-align:center;}
+    nav {display:flex; justify-content:center; gap:20px; background:#222; padding:10px;}
+    nav a {color:white; text-decoration:none; font-weight:bold;}
+    .container {padding:20px;}
+    .products {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+    .card {background:#1a1a1a; border-radius:10px; padding:15px; text-align:center;}
+    .card img {width:100%; border-radius:10px;}
+    select,input {margin:5px 0; padding:8px; width:100%;}
+    button {background:#fff; color:#000; border:none; padding:10px; cursor:pointer; border-radius:5px; font-weight:bold;}
+    footer {text-align:center; padding:15px; background:#000; margin-top:20px;}
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.jpg" alt="Logo Stylo Propio" style="max-width:180px; display:block; margin:0 auto 10px; border-radius:10px;">
+  <h1>Stylo Propio</h1>
+  <p>Indumentaria deportiva y urbana</p>
+</header>
+
+<nav>
+  <a href="#minorista">Compra Minorista</a>
+  <a href="#mayorista">Compra Mayorista</a>
+</nav>
+
+<div class="container" id="minorista">
+  <h2>Compra Minorista</h2>
+  <p>Realizá tu pedido directamente desde la web. Al finalizar, serás redirigido a WhatsApp para confirmar la compra.</p>
+
+  <div class="products">
+
+    <!-- TOP DEPORTIVO -->
+    <div class="card">
+      <img src="top.jpg" alt="Top deportivo">
+      <h3>Top Deportivo</h3>
+      <p><strong>Precio:</strong> $ -</p>
+      <p><strong>Colores disponibles:</strong> Negro / Blanco</p>
+      <select id="talle1">
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+      </select>
+      <input type="number" id="cantidad1" placeholder="Cantidad">
+      <button onclick="enviarPedido('Top Deportivo','talle1','cantidad1')">Realizar pedido</button>
+    </div>
+
+    <!-- JEAN URBANO -->
+    <div class="card">
+      <img src="jean.jpg" alt="Jean urbano">
+      <h3>Jean Urbano</h3>
+      <p><strong>Precio:</strong> $ -</p>
+      <p><strong>Colores disponibles:</strong> Negro / Blanco</p>
+      <select id="talle2">
+        <option value="36">36</option>
+        <option value="38">38</option>
+        <option value="40">40</option>
+      </select>
+      <input type="number" id="cantidad2" placeholder="Cantidad">
+      <button onclick="enviarPedido('Jean Urbano','talle2','cantidad2')">Realizar pedido</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="container" id="mayorista">
+  <h2>Compra Mayorista</h2>
+  <p>Los pedidos que superen los <strong>$100.000</strong> serán considerados automáticamente como compras mayoristas.</p>
+  <p>Para consultas específicas o compras al por mayor, podés comunicarte directamente vía WhatsApp.</p>
+</div>
+
+<footer>
+  <p>Seguinos en Instagram: <a href="https://www.instagram.com/stylo_propio_mdz" target="_blank" style="color:white;">@stylo_propio_mdz</a></p>
+</footer>
+
+<script>
+  function enviarPedido(producto, talleId, cantidadId) {
+    let talle = document.getElementById(talleId).value;
+    let cantidad = document.getElementById(cantidadId).value;
+
+    let mensaje = `Hola, deseo realizar el siguiente pedido:%0AProducto: ${producto}%0ATalle: ${talle}%0ACantidad: ${cantidad}`;
+
+    let numero = "5492634510438";
+
+    let url = `https://wa.me/${numero}?text=${mensaje}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+  <!-- INSTRUCCIONES AUTOMÁTICAS -->
+  <!--
+  IMPORTANTE:
+  Para que las imágenes funcionen SIN problemas:
+
+  1. Guardá este archivo como index.html
+  2. Ponelo en una carpeta
+  3. Dentro de esa misma carpeta poné las imágenes con estos nombres:
+     - logo.jpg
+     - top.jpg
+     - jean.jpg
+
+  ✔ TODO debe estar en la misma carpeta
+  ✔ No uses acentos ni espacios en los nombres
+
+  Luego abrí el index.html y ya funciona perfecto
+  -->
+
+</body>
+</html>
